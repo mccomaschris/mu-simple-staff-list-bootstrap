@@ -68,10 +68,10 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		}
 
 		if ($i % 2) {
-			$output .= '<div class="staff-member odd '.$staff_member_classes.'">';
+			$output .= '<div class="staff-member odd '.$staff_member_classes.'" x-data="{showBio: false}">';
 
 		} else {
-			$output .= '<div class="staff-member even '.$staff_member_classes.'">';
+			$output .= '<div class="staff-member even '.$staff_member_classes.'" x-data="{showBio: false}">';
 		}
 
 		global $post;
@@ -120,8 +120,8 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 
 		if($bio) {
 		    if (function_exists('wpautop')){
-                $bio_format  = '<p><button class="btn btn-mini" type="button" data-target="#'.str_replace(" ","",$group).$i.'" data-toggle="collapse">Read Bio</button></p>';
-		        $bio_format .= '<div class="collapse" id="'.str_replace(" ","",$group).$i.'">'.wpautop($bio).'</div>';
+                $bio_format  = '<p><button class="btn btn-mini" type="button" x-on:click="showBio = !showBio">Read Bio</button></p>';
+		        $bio_format .= '<div class="collapse" :class="{ \'hidden\' : showBio }" id="'.str_replace(" ","",$group).$i.'">'.wpautop($bio).'</div>';
 		    }
         }
         else{
