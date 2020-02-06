@@ -129,7 +129,7 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		}
 
 
-		$email_mailto = '<a class="staff-member-email" href="mailto:'.antispambot( $email ).'" title="Email '.$name.'">'.antispambot( $email ).'</a>';
+		$email_mailto = '<div class="flex items-center"><a class="staff-member-email" href="mailto:'.antispambot( $email ).'" title="Email '.$name.'">'.antispambot( $email ).'</a></div>';
 		$email_nolink = antispambot( $email );
 
 
