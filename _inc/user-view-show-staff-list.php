@@ -66,7 +66,7 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 			$staff_member_classes .= " last";
             $closing_tag = '</div>';
 		} else {
-				$staff_member_classes .= " border-b border-gray-100 ";
+			$staff_member_classes .= " border-b border-gray-100 ";
 		}
 
 		if ($i == 0) {
@@ -146,7 +146,7 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		$replace_single_values = array($name, $name_slug, $photo_url, $title, $email_nolink, $phone, $bio, $office, $fb_url, $tw_url);
 
 		$accepted_formatted_tags = $default_formatted_tags;
-		$replace_formatted_values = array('<h3 class="">'.$name.'</h3>', '<h4 class="">'.$title.'</h4>', $photo, $email_mailto, $bio_format, $mu_custom );
+		$replace_formatted_values = array('<h3 class="">'.$name.'</h3>', '<h4 class="mb-2">'.$title.'</h4>', $photo, $email_mailto, $bio_format, $mu_custom );
 
 		$loop_markup = str_replace($accepted_single_tags, $replace_single_values, $loop_markup);
 		$loop_markup = str_replace($accepted_formatted_tags, $replace_formatted_values, $loop_markup);
