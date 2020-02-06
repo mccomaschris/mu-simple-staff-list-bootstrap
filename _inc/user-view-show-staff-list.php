@@ -120,7 +120,7 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 
 		if($bio) {
 		    if (function_exists('wpautop')){
-                $bio_format  = '<p><button class="btn btn-mini" type="button" x-on:click="showBio = !showBio">Read Bio</button></p>';
+                $bio_format  = '<p><div class="btn btn-mini" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
 		        $bio_format .= '<div class="collapse hidden" :class="{ \'hidden\' : !showBio }" id="'.str_replace(" ","",$group).$i.'">'.wpautop($bio).'</div>';
 		    }
         }
