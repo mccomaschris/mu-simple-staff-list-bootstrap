@@ -67,11 +67,17 @@ function sslp_staff_member_listing_shortcode_func($atts) {
             $closing_tag = '</div>';
 		}
 
+		if ($i == 0) {
+			$staff_member_classes .= " mb-6 border-b border-gray-100";
+		} else {
+			$staff_member_classes .= " my-6 border-b border-gray-100 ";
+		}
+
 		if ($i % 2) {
-			$output .= '<div class="my-6 border-b border-gray-100 '.$staff_member_classes.'">';
+			$output .= '<div class=" '.$staff_member_classes.'">';
 
 		} else {
-			$output .= '<div class="my-6 border-b border-gray-100 '.$staff_member_classes.'">';
+			$output .= '<div class=" '.$staff_member_classes.'">';
 		}
 
 		global $post;
