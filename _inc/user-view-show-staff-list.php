@@ -118,18 +118,19 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 			$photo = '';
 		}
 
-		if($bio) {
-		    if (function_exists('wpautop')){
-                $bio_format  = '<p><div class="btn btn-mini" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
-		        $bio_format .= '<div class="collapse hidden" :class="{ \'hidden\' : !showBio }" id="'.str_replace(" ","",$group).$i.'">'.wpautop($bio).'</div>';
-		    }
-        }
-        else{
-            $bio_format = "";
-		}
+
 
 		$email_mailto = '<a class="staff-member-email" href="mailto:'.antispambot( $email ).'" title="Email '.$name.'">'.antispambot( $email ).'</a>';
 		$email_nolink = antispambot( $email );
+
+			if ($bio) {
+				if (function_exists('wpautop')) {
+					$bio_format  = '<p><div class="" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
+					$bio_format .= '<div class="collapse hidden" :class="{ \'hidden\' : !showBio }" id="' . str_replace(" ", "", $group) . $i . '">' . wpautop($bio) . '</div>';
+				}
+			} else {
+				$bio_format = "";
+			}
 
 		$accepted_single_tags = $default_tags;
 		$replace_single_values = array($name, $name_slug, $photo_url, $title, $email_nolink, $phone, $bio, $office, $fb_url, $tw_url);
