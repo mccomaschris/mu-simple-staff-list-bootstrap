@@ -1,17 +1,13 @@
 <?php
 /*
 Plugin Name: MU Forked Simple Staff List Booststrap
-Plugin URI: 
+Plugin URI:
 Description: A simple plugin to build and display a staff listing for your website.
 Version: 1.15
 Author: Brett Shumaker
 Author URI: http://www.brettshumaker.com
 
-Customized by: Kevin Bannon - Marshall University
-For use exclusively on the various websites within the College of Arts and Media.
 */
-
-
 
 /*
 // Include some files and setup our plugin dir url
@@ -55,7 +51,7 @@ if ( ! function_exists( 'get_plugins' ) )
 
 $plugin_folder = get_plugins( '/' . plugin_basename( dirname( __FILE__ ) ) );
 $plugin_file = basename( ( __FILE__ ) );
-$plugin_version = $plugin_folder[$plugin_file]['Version'];    
+$plugin_version = $plugin_folder[$plugin_file]['Version'];
 $sslp_ver_option = get_option('_simple_staff_list_version');
 if ($sslp_ver_option == "" || $sslp_ver_option <= $plugin_version){
 	sslp_staff_member_plugin_update($sslp_ver_option, $plugin_version);
@@ -157,7 +153,7 @@ function sslp_staff_member_init() {
 add_action( 'init', 'sslp_custom_tax' );
 
 function sslp_custom_tax() {
-	
+
 	$labels = array(
 		'name' => _x( 'Groups', 'taxonomy general name' ),
 		'singular_name' => _x( 'Group', 'taxonomy singular name' ),
@@ -165,11 +161,11 @@ function sslp_custom_tax() {
 		'all_items' => __( 'All Groups' ),
 		'parent_item' => __( 'Parent Group' ),
 		'parent_item_colon' => __( 'Parent Group:' ),
-		'edit_item' => __( 'Edit Group' ), 
+		'edit_item' => __( 'Edit Group' ),
 		'update_item' => __( 'Update Group' ),
 		'add_new_item' => __( 'Add New Group' ),
 		'new_item_name' => __( 'New Group Name' ),
-	); 	
+	);
 
 	register_taxonomy( 'staff-member-group', array( 'staff-member' ), array(
 		'hierarchical' => true,
@@ -206,13 +202,13 @@ function hide_meta_lock($hidden, $screen) {
 
 /**
  * Change "Enter Title Here" text
- * 
+ *
  * Changes title text on post edit screen for staff-member CPT
  *
  * @param    string    $screen    	get_current_screen()
  * @return   string               	returns new placeholder text for "Enter title here" input
  */
- 
+
 add_filter( 'enter_title_here', 'sslp_staff_member_change_title' );
 function sslp_staff_member_change_title( $title ){
     $screen = get_current_screen();
@@ -234,9 +230,9 @@ function sslp_staff_member_change_title( $title ){
  * Change Featured Image title
  *
  * Removes the default featured image box and adds a new one with a new title
- * 
+ *
  */
- 
+
 add_action('do_meta_boxes', 'sslp_staff_member_featured_image_text');
 function sslp_staff_member_featured_image_text() {
 
@@ -251,7 +247,7 @@ function sslp_staff_member_featured_image_text() {
 
 /**
  * Adds MetaBoxes for staff-member
- * 
+ *
  * All metabox callback functions are located in _inc/admin-views.php
  *
  */
@@ -260,7 +256,7 @@ add_action('do_meta_boxes', 'sslp_staff_member_add_meta_boxes');
 function sslp_staff_member_add_meta_boxes() {
 
     add_meta_box('staff-member-info', __('Staff Member Info'), 'sslp_staff_member_info_meta_box', 'staff-member', 'normal', 'high');
-    
+
     add_meta_box('staff-member-bio', __('Staff Member Bio'), 'sslp_staff_member_bio_meta_box', 'staff-member', 'normal', 'high');
 }
 
@@ -279,7 +275,7 @@ function sslp_staff_member_add_meta_boxes() {
  * @param    array    $cols    New column titles
  * @return   array             Column titles
  */
- 
+
 add_filter( "manage_staff-member_posts_columns", "sslp_staff_member_custom_columns" );
 function sslp_staff_member_custom_columns( $cols ) {
 	$cols = array(
@@ -305,15 +301,15 @@ function sslp_staff_member_custom_columns( $cols ) {
 
 /**
  * Registers sub pages for staff-member CPT
- * 
- * Adds "Order" and "Templates" page to WP nav. 
+ *
+ * Adds "Order" and "Templates" page to WP nav.
  * ALSO adds the print scripts action to load our js only on the pages we need it.
  *
  * @param    function    $order_page	    sets up the Order page
  * @param    function    $templates_page    sets up the Order page
- * 
+ *
  */
- 
+
 add_action( 'admin_menu', 'sslp_staff_member_register_menu' );
 function sslp_staff_member_register_menu() {
 	$order_page 	= add_submenu_page(
@@ -323,7 +319,7 @@ function sslp_staff_member_register_menu() {
 						'edit_pages', 'staff-member-order',
 						'sslp_staff_member_order_page'
 					);
-	
+
 	$templates_page = add_submenu_page(
 						'edit.php?post_type=staff-member',
 						'Display Templates',
@@ -331,7 +327,7 @@ function sslp_staff_member_register_menu() {
 						'edit_pages', 'staff-member-template',
 						'sslp_staff_member_template_page'
 					);
-	
+
 	$usage_page 	= add_submenu_page(
 						'edit.php?post_type=staff-member',
 						'Simple Staff List Usage',
@@ -339,7 +335,7 @@ function sslp_staff_member_register_menu() {
 						'edit_pages', 'staff-member-usage',
 						'sslp_staff_member_usage_page'
 					);
-	
+
 	add_action( 'admin_print_scripts-'.$order_page, 'sslp_staff_member_admin_print_scripts' );
 	add_action( 'admin_print_scripts-'.$templates_page, 'sslp_staff_member_admin_print_scripts' );
 }
