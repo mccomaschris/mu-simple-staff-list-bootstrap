@@ -70,9 +70,9 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		}
 
 		if ($i == 0) {
-			$staff_member_classes .= " mb-6 ";
+			$staff_member_classes .= " mb-8 ";
 		} else {
-			$staff_member_classes .= " my-6  ";
+			$staff_member_classes .= " my-8  ";
 		}
 
 		if ($i % 2) {
