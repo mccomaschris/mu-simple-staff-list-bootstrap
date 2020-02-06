@@ -65,12 +65,14 @@ function sslp_staff_member_listing_shortcode_func($atts) {
         if ($i == ($staff->found_posts)-1) {
 			$staff_member_classes .= " last";
             $closing_tag = '</div>';
+		} else {
+				$staff_member_classes .= " border-b border-gray-100 ";
 		}
 
 		if ($i == 0) {
-			$staff_member_classes .= " mb-6 border-b border-gray-100";
+			$staff_member_classes .= " mb-6 ";
 		} else {
-			$staff_member_classes .= " my-6 border-b border-gray-100 ";
+			$staff_member_classes .= " my-6  ";
 		}
 
 		if ($i % 2) {
