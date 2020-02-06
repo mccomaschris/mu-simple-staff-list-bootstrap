@@ -68,10 +68,10 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		}
 
 		if ($i % 2) {
-			$output .= '<div class="staff-member odd '.$staff_member_classes.'" x-data="{showBio: false}">';
+			$output .= '<div class="staff-member odd '.$staff_member_classes.'">';
 
 		} else {
-			$output .= '<div class="staff-member even '.$staff_member_classes.'" x-data="{showBio: false}">';
+			$output .= '<div class="staff-member even '.$staff_member_classes.'">';
 		}
 
 		global $post;
@@ -123,14 +123,14 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		$email_mailto = '<a class="staff-member-email" href="mailto:'.antispambot( $email ).'" title="Email '.$name.'">'.antispambot( $email ).'</a>';
 		$email_nolink = antispambot( $email );
 
-			if ($bio) {
-				if (function_exists('wpautop')) {
-					$bio_format  = '<p><div class="" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
-					$bio_format .= '<div class="collapse hidden" :class="{ \'hidden\' : !showBio }" id="' . str_replace(" ", "", $group) . $i . '">' . wpautop($bio) . '</div>';
-				}
-			} else {
-				$bio_format = "";
+		if ($bio) {
+			if (function_exists('wpautop')) {
+				// $bio_format  = '<p><div class="" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
+				$bio_format .= '<div id="' . str_replace(" ", "", $group) . $i . '">' . wpautop($bio) . '</div>';
 			}
+		} else {
+			$bio_format = "";
+		}
 
 		$accepted_single_tags = $default_tags;
 		$replace_single_values = array($name, $name_slug, $photo_url, $title, $email_nolink, $phone, $bio, $office, $fb_url, $tw_url);
