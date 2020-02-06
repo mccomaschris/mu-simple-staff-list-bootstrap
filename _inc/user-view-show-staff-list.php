@@ -68,10 +68,10 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 		}
 
 		if ($i % 2) {
-			$output .= '<div class="my-4 '.$staff_member_classes.'">';
+			$output .= '<div class="my-6 border-b border-gray-100 '.$staff_member_classes.'">';
 
 		} else {
-			$output .= '<div class="my-4 '.$staff_member_classes.'">';
+			$output .= '<div class="my-6 border-b border-gray-100 '.$staff_member_classes.'">';
 		}
 
 		global $post;
