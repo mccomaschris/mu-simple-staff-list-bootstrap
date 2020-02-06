@@ -112,7 +112,7 @@ function sslp_staff_member_listing_shortcode_func($atts) {
         if(has_post_thumbnail()){
 
 			$photo_url = wp_get_attachment_url( get_post_thumbnail_id() );
-			$photo = '<img class="staff-member-photo" src="'.$photo_url.'" alt = "'.$title.'">';
+			$photo = '<img class="mx-auto" src="'.$photo_url.'" alt = "'.$title.'">';
 		}else{
 			$photo_url = '';
 			$photo = '';
