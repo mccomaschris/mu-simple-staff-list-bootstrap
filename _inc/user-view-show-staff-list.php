@@ -120,8 +120,9 @@ function sslp_staff_member_listing_shortcode_func($atts) {
 
 		if ($bio) {
 			if (function_exists('wpautop')) {
+
 				// $bio_format  = '<p><div class="" type="button" x-on:click="showBio = !showBio">Read Bio</div></p>';
-				$bio_format .= '<div id="' . str_replace(" ", "", $group) . $i . '">' . wpautop($bio) . '</div>';
+				$bio_format .= '<div id="' . str_replace(" ", "", $group) . $i . '"><!-- asdf -->' . wpautop($bio) . '</div>';
 			}
 		} else {
 			$bio_format = "";
